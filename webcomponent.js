@@ -1,7 +1,6 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-        <h1>Hello World</h1>
     `;
 
     customElements.define('com-sap-sample-helloworld2', class HelloWorld1 extends HTMLElement {
@@ -88,9 +87,9 @@
 
         redraw(){
             if (this._tagContainer){
-                window.getSelection(this._shadowRoot).selectAll("*").remove();
+                this._tagContainer.parentNode.removeChild(this._tagContainer);
             }
-            
+
             var shadow = window.getSelection(this._shadowRoot);
             this._tagContainer = document.createElement(this._tagType);
             var theText = document.createTextNode(this._tagText);    
