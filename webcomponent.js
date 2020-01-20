@@ -62,11 +62,11 @@
             }
 
             if (value == "h2"){
-                this._tagType = "h2:h2";
+                this._tagType = "h2";
             } else if (value == "h3"){
-                this._tagType = "h3:h3";
+                this._tagType = "h3";
             } else {
-                this._tagType = "h1:h1";
+                this._tagType = "h1";
             } 
             this.redraw();
         }
@@ -89,14 +89,15 @@
         redraw(){
             if (!this._tagContainer){
                 var shadow = window.getSelection(this._shadowRoot);
-                this._tagContainer = window.getSelection(this._shadowRoot)
-                    .append(this._tagType)
-                    .attr("innerHTML", this._tagText);
+                var hNode = document.createElement(this._tagType)
+                    .attr("innerHTML", this._tagText);;
+                shadow.appendChild(hNode);
             } else{
                 window.getSelection(this._shadowRoot).selectAll("*").remove();
-                this._tagContainer = window.getSelection(this._shadowRoot)
-                    .append(this._tagType)
-                    .attr("innerHTML", this._tagText);
+                var shadow = window.getSelection(this._shadowRoot);
+                var hNode = document.createElement(this._tagType)
+                    .attr("innerHTML", this._tagText);;
+                shadow.appendChild(hNode);
 }
         }
     
