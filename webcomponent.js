@@ -55,10 +55,6 @@
         }
 
         set headingType(value) {
-            //Empty the shadow dom
-            if (this._tagContainer){
-                this._tagContainer._groups[0][0].innerHTML = "";
-            }
 
             if (value == "h2"){
                 this._tagType = "h2";
@@ -75,10 +71,7 @@
         }
 
         set widgetText(value) {
-            //Empty the shadow dom
-            if (this._tagContainer){
-                this._tagContainer._groups[0][0].innerHTML = "";
-            }
+
 
             this._tagText = value;
             this.redraw();
