@@ -11,7 +11,7 @@
 			this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this._tagContainer;
-            this._tagType = "h1:h1";
+            this._tagType = "h1";
             this._tagText = "";
 		}
 
@@ -48,35 +48,6 @@
         
         }
         */
-
-        //Getters and Setters
-        get headingType() {
-            return this._tagType;
-        }
-
-        set headingType(value) {
-
-            if (value == "h2"){
-                this._tagType = "h2";
-            } else if (value == "h3"){
-                this._tagType = "h3";
-            } else {
-                this._tagType = "h1";
-            } 
-            this.redraw();
-        }
-
-        get widgetText() {
-            return this._tagType;
-        }
-
-        set widgetText(value) {
-
-
-            this._tagText = value;
-            this.redraw();
-        }
-        // End - Getters and Setters
 
         redraw(){
             if (this._tagContainer){
