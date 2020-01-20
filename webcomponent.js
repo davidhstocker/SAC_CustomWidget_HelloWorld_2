@@ -88,12 +88,12 @@
 
         redraw(){
             if (!this._tagContainer){
-                var shadow = document.select(this._shadowRoot);
+                var shadow = window.getSelection(this._shadowRoot);
                 this._tagContainer = document.select(this._shadowRoot)
                     .append(this._tagType)
                     .attr("innerHTML", this._tagText);
             } else{
-                document.select(this._shadowRoot).selectAll("*").remove();
+                window.getSelection(this._shadowRoot).selectAll("*").remove();
                 this._tagContainer = document.select(this._shadowRoot)
                     .append(this._tagType)
                     .attr("innerHTML", this._tagText);
