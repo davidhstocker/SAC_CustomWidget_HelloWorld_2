@@ -12,7 +12,7 @@
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this._tagContainer;
             this._tagType = "h1";
-            this._tagText = "";
+            this._tagText = "Hello World";
 		}
 
         //Fired when the widget is added to the html DOM of the page
