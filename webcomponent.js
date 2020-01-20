@@ -90,14 +90,14 @@
             if (!this._tagContainer){
                 var shadow = window.getSelection(this._shadowRoot);
                 var hNode = document.createElement(this._tagType);
-                var theText = createTextNode(this._tagText);    
+                var theText = document.createTextNode(this._tagText);    
                 hNode.appendChild(theText); 
                 this._shadowRoot.appendChild(hNode);
             } else{
                 window.getSelection(this._shadowRoot).selectAll("*").remove();
                 var shadow = window.getSelection(this._shadowRoot);
                 var hNode = document.createElement(this._tagType);
-                var theText = createTextNode(this._tagText);    
+                var theText = document.createTextNode(this._tagText);    
                 hNode.appendChild(theText); 
                 this._shadowRoot.appendChild(hNode);
 }
