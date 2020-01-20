@@ -3,6 +3,7 @@
     tmpl.innerHTML = `
       <style>
       </style>
+      <span id="theText">Hello World</<span>
     `;
 
     customElements.define('com-sap-sample-helloworld2', class HelloWorld1 extends HTMLElement {
