@@ -1,9 +1,7 @@
 (function()  {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
-      <style>
-      </style>
-      <span id="theText">Hello World</<span>
+
     `;
 
     customElements.define('com-sap-sample-helloworld2', class HelloWorld1 extends HTMLElement {
@@ -11,8 +9,11 @@
 
 		constructor() {
 			super(); 
-			let shadowRoot = this.attachShadow({mode: "open"});
-			shadowRoot.appendChild(tmpl.content.cloneNode(true));
+			this._shadowRoot = this.attachShadow({mode: "open"});
+            this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+            this._tagContainer;
+            this._tagType = "h1:h1";
+            this._tagText = "";
 		}
 
         //Fired when the widget is added to the html DOM of the page
@@ -48,6 +49,56 @@
         
         }
         */
+
+        //Getters and Setters
+        get headingType() {
+            return this._tagType;
+        }
+
+        set headingType(value) {
+            //Empty the shadow dom
+            if (this._svgContainer){
+                this._svgContainer._groups[0][0].innerHTML = "";
+            }
+
+            if (value == "h2"){
+                this._tagType = "h2:h2";
+            } else if (value == "h3"){
+                this._tagType = "h3:h3";
+            } else {
+                this._tagType = "h1:h1";
+            } 
+            this.redraw();
+        }
+
+        get widgetText() {
+            return this._tagType;
+        }
+
+        set widgetText(value) {
+            //Empty the shadow dom
+            if (this._svgContainer){
+                this._svgContainer._groups[0][0].innerHTML = "";
+            }
+
+            this._tagText = value;
+            this.redraw();
+        }
+        // End - Getters and Setters
+
+        redraw(){
+            if (!this._tagContainer){
+                var shadow = document.select(this._shadowRoot);
+                this._tagContainer = document.select(this._shadowRoot)
+                    .append(this._tagType)
+                    .attr("innerHTML", this._tagText);
+            } else{
+                document.select(this._shadowRoot).selectAll("*").remove();
+                this._tagContainer = document.select(this._shadowRoot)
+                    .append(this._tagType)
+                    .attr("innerHTML", this._tagText);
+}
+        }
     
     
     });
